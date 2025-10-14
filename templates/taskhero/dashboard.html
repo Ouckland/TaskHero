@@ -1,0 +1,125 @@
+{% load static %}
+
+{% block extrahead %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+{% endblock extrahead %}
+
+{% block header %}
+    {% if request.user.is_authenticated %}
+                <nav class="dash-nav">
+        <div class="nav-left">
+            <a href="{% url 'TaskHero:dashboard' %}" class="nav-logo">Dashboard</a>
+            <a href="{% url 'TaskHero:add_task' %}" class="nav-link">Add Task</a>
+        </div>
+
+        <button class="hamburger" aria-label="Toggle navigation">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+        <form action="{% url 'users:logout' %}" method="POST" class="nav-right">
+            {% csrf_token %}
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+</nav>
+
+    {% endif %}
+{% endblock header %}
+
+{% block content %}
+    {% if messages %}
+        <div class="messages" id="messages">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="search-bar-nav">
+        <p>Welcome, {{ request.user.username|title }}</p>
+        <form method="GET" action="{% url 'TaskHero:dashboard' %}">
+            {% csrf_token %}
+            {{ search_form.as_div }}
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <section class="task-section">
+        <div class="tasks-card">
+            <div class="task-column to-do-card">
+                <h2>To Do</h2>
+                {% if not to_do_tasks %}
+                <p class='to-do-p'>You have no task to do</p>
+                <a href="{% url 'TaskHero:add_task' %}" class='to-do-a'>Add task</a>
+                {% else %}
+                    {% for task in all_tasks %}
+                        {% if task.status == 'TD' %}
+                            <div class="task-item">
+                            <span>Title - {{ task.title }}</span>
+                            <a href="{% url 'TaskHero:task_detail' task.id %}">View Task</a>
+                            </div>
+
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="task-column in-progress-card">
+                <h2>In Progress</h2>
+                {% if not in_progress_tasks %}
+                <p class='in-progress-p'>You have no current task in progress</p>
+                <a href="{% url 'TaskHero:add_task' %}" class='in-progress-a'>Add task</a>
+                {% else %}
+                    {% for task in all_tasks %}
+                        {% if task.status == 'IP' %}
+                            <div class="task-item">
+                                <span>Title - {{ task.title }}</span>
+                                <a href="{% url 'TaskHero:task_detail' task.id %}">View Task</a>
+                            
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="task-column completed-card">
+                <h2>Completed</h2>
+                {% if not completed_tasks %}
+                <p class='completed-p'>You have no completed tasks</p>
+                {% else %}
+                    {% for task in all_tasks %}
+                        {% if task.status == 'CPD' %}
+                            <div class="task-item">
+                                <span>Title - {{ task.title }}</span>
+                            <a href="{% url 'TaskHero:task_detail' task.id %}">View Task</a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+      // Message fade out after 4 seconds
+      setTimeout(() => {
+        const msg = document.getElementById("messages");
+        if (msg) {
+          msg.style.opacity = "0";
+          msg.style.transition = "opacity 1s ease";
+        }
+      }, 4000);
+
+
+      const hamburger = document.querySelector(".hamburger");
+        const navLeft = document.querySelector(".nav-left");
+
+        hamburger.addEventListener("click", () => {
+        navLeft.classList.toggle("active");
+        });
+
+    </script>
+{% endblock %}

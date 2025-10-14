@@ -1,0 +1,60 @@
+{% extends "partials/base.html" %}
+{% load static %}
+    
+{% block title %}
+    TaskHero/home
+{% endblock title %}
+{% block extrahead %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+{% endblock extrahead %}
+
+{% block content %}
+    <body>
+      <nav class="home-nav">
+  <div class="links" id="nav-menu">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Testimonials</a>
+    <a href="#">Services</a>
+  </div>
+
+  <div class="btns">
+    <a href="{% url 'users:login' %}"><span class="material-symbols-outlined">Login</span></a>
+    <a href="{% url 'users:sign_up' %}"><span class="material-symbols-outlined">Sign up</span></a>
+  </div>
+</nav>
+
+    <div class="container">
+      <h1>Welcome to TaskHero</h1>
+      <p>TaskHero is your ultimate task management companion. Organize your day, prioritize tasks, and boost productivity with ease. Whether you're tackling personal goals or managing team projects, TaskHero helps you stay on top of everything.</p>
+      <p>Organize, prioritize, and get things done with ease. Task Hero is your smart task manager for everyday productivity.</p>
+      <div class="buttons">
+        <a href="{% url 'users:sign_up' %}" class="signup">Get Started</a>
+      </div>
+    </div>
+    {% comment %} <div class="container">
+      <h1>Welcome to TaskHero</h1>
+      <p>TaskHero is your ultimate task management companion. Organize your day, prioritize tasks, and boost productivity with ease. Whether you're tackling personal goals or managing team projects, TaskHero helps you stay on top of everything.</p>
+      <p>Organize, prioritize, and get things done with ease. Task Hero is your smart task manager for everyday productivity.</p>
+      <div class="buttons">
+        <a href="{% url 'users:sign_up' %}" class="signup">Get Started</a>
+      </div>
+    </div> {% endcomment %}
+    {% include "partials/footer.html" %}
+  <script>
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.links');
+  const navBtns = document.querySelector('.btns');
+
+  hamburger.addEventListener('click', () => {
+    const expanded = hamburger.getAttribute('aria-expanded') === 'true' || false;
+    hamburger.setAttribute('aria-expanded', !expanded);
+    navLinks.classList.toggle('active');
+    navBtns.classList.toggle('active');
+  });
+</script>
+
+
+</body>
+{% endblock content %}

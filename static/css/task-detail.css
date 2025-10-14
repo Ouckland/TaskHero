@@ -1,0 +1,162 @@
+
+/* Message Box Styling */
+.messages {
+    margin: 1rem auto;
+    width: 80%;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 1rem;
+    border-radius: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+/* General Reset */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/* Body Styles */
+body {
+    font-family: system-ui, sans-serif;
+    background: linear-gradient(135deg, #120540, #433C73, #A4088C);
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Navigation Styles */
+
+.dash-nav {
+    background-color: #120540;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 70px;
+}
+
+.dash-nav form button {
+    background-color: #AEA7D9;
+    color: #120540;
+    padding: 8px 20px;
+    border-radius: 20px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dash-nav form button:hover {
+    background-color: #f2f2f2;
+    color: #120540;
+}
+
+
+/* Task Detail Page Styles */
+.task-detail-section {
+    margin: 2rem auto;
+    width: 80%;
+    max-width: 800px;
+    background: rgba(18, 5, 64, 0.8);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #120540;
+}
+
+.task-detail-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.task-detail-item {
+    font-size: 1.1rem;
+    color: #AEA7D9;
+    font-weight: bold;
+}
+
+.task-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.task-action-btn {
+    padding: 0.75rem 1.5rem;
+    background-color: #AEA7D9;
+    color: #120540;
+    border: none;
+    border-radius: 20px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.task-action-btn:hover {
+    background-color: #f2f2f2;
+    color: #120540;
+}
+
+.overdue-warning {
+    color: #ff6b6b;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Responsive media queries for Task Detail page */
+
+@media (max-width: 768px) {
+  .task-detail-section {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  .task-detail-item {
+    font-size: 1rem;
+  }
+
+  .task-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .task-action-btn {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .task-detail-section {
+    width: 95%;
+    padding: 1rem;
+  }
+
+  .task-detail-item {
+    font-size: 0.9rem;
+  }
+
+  .task-actions {
+    gap: 0.5rem;
+  }
+
+  .task-action-btn {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+}
+

@@ -1,0 +1,286 @@
+  /* Core Reset */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* Background and Body */
+body {
+  font-family: system-ui, sans-serif;
+  background: linear-gradient(135deg, #120540, #433C73, #A4088C);
+  background-size: cover;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+/* Navigation Bar */
+.home-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  background-color: #120540;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.home-nav .links {
+  display: flex;
+  gap: 3rem;
+  margin-left: 50px;
+}
+
+.links a,
+.btns a {
+  text-decoration: none;
+  min-width: 70px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  color: #fff;
+  font-weight: bold;
+  transition: 0.3s ease-in-out;
+}
+
+.links a:hover {
+  color: #AEA7D9;
+}
+
+.home-nav .btns {
+  margin-left: auto;
+  margin-right: 50px;
+  display: flex;
+  gap: 10px;
+}
+
+.btns a {
+  background-color: #A4088C;
+}
+
+.btns a:hover {
+  background-color: #433C73;
+  color: #fff;
+}
+/* Hide hamburger by default on large screens */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 20; /* above nav */
+}
+
+.hamburger-line {
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+/* Mobile: show hamburger, hide nav links and buttons by default */
+@media screen and (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .links,
+  .btns {
+    display: none;
+    flex-direction: column;
+    background-color: #120540;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 200px;
+    padding: 1rem;
+    border-radius: 0 0 0 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  }
+
+  /* Show nav menu when active */
+  .links.active,
+  .btns.active {
+    display: flex;
+  }
+
+  .links a,
+  .btns a {
+    padding: 10px;
+    margin: 5px 0;
+    width: 100%;
+    text-align: right;
+  }
+}
+
+
+/* Success Alert */
+.alert-success {
+  color: #120540;
+  background-color: #AEA7D9;
+  line-height: 2;
+  position: relative;
+  top: 50px;
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 5px;
+  box-shadow: 4px 6px 7px #333;
+  animation: slideRight 1s ease-in-out;
+}
+
+/* Slide In Animation */
+@keyframes slideRight {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(20%);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Home Page Content */
+.container {
+  text-align: center;
+  padding: 2rem;
+  max-width: 600px;
+  margin-top: 100px;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  color: #AEA7D9;
+}
+
+p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.buttons a {
+  background-color: #A4088C;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.buttons a:hover {
+  background-color: #433C73;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.logo span {
+  color: #f2f2f2;
+}
+
+
+
+
+/* ------------------- Responsive Styles ------------------- */
+
+/* Small screens: default mobile-first layout already good */
+
+/* Large desktops and wider screens (≥ 1025px) */
+@media screen and (min-width: 1025px) {
+  .home-nav {
+    justify-content: space-between;
+    padding: 0 5rem;
+  }
+
+  .home-nav .links {
+    margin-left: 0;
+  }
+
+  .home-nav .btns {
+    margin-right: 0;
+  }
+
+  .container {
+    max-width: 900px;
+    margin-top: 120px;
+    padding: 3rem;
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  p {
+    font-size: 1.5rem;
+  }
+
+  .buttons a {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+}
+
+/* Medium to small desktops and tablets (768px - 1024px) */
+@media screen and (max-width: 1024px) {
+  .home-nav {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .home-nav .links,
+  .home-nav .btns {
+    flex-direction: column;
+    gap: 1rem;
+    margin: 0;
+    align-items: center;
+  }
+
+  .home-nav .links a,
+  .home-nav .btns a {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .container {
+    margin-top: 150px;
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+  }
+}

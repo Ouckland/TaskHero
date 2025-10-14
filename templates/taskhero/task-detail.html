@@ -1,0 +1,49 @@
+{% comment %} {% extends "partials/base.html" %} {% endcomment %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskHero/Task Detail</title>
+    <link rel="stylesheet" href="{% static 'css/task-detail.css' %}">
+</head>
+<body>
+    {% include "partials/header.html" %}
+        {% if messages %}
+        <div class="messages" id="messages">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <section class="task-detail-section">
+            <div class="task-detail-container">
+                <span class="task-detail-item">Title - {{ task.title }}</span>                    
+                <span class="task-detail-item">Description - {{ task.description }}</span>
+                <span class="task-detail-item">Due date - {{ task.due_date }}</span>
+                    {% if is_overdue %}
+                        <span class="overdue-warning">⚠️ Overdue</span>
+                    {% endif %}
+                <span class="task-detail-item">Status - {{ task.get_status_display }}</span>
+                <span class="task-detail-item">Priority - {{ task.get_priority_display }}</span>
+                <div class="task-actions">
+                    <a href="{% url 'TaskHero:edit_task' task.id %}" class="task-action-btn">Edit Task</a>
+                    <a href="{% url 'TaskHero:confirm_delete' task.id %}" class="task-action-btn">Delete Task</a>
+                </div>
+            </div>
+        </section>
+        <script>
+      // Message fade out after 4 seconds
+      setTimeout(() => {
+        const msg = document.getElementById("messages");
+        if (msg) {
+          msg.style.opacity = "0";
+          msg.style.transition = "opacity 1s ease";
+        }
+      }, 4000);
+    </script>
+    </body>
+</body>
+</html>

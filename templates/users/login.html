@@ -1,0 +1,25 @@
+{% extends "partials/base.html" %}
+{% load static %}
+{% block title %}
+    TaskHero/login/
+{% endblock title %}
+{% block extrahead %}
+    <link rel="stylesheet" href="{% static 'css/sign-up.css' %}">
+{% endblock extrahead %}    
+{% block content %}
+    <body>
+        <section>
+            <h1>LOGIN</h1>
+            <form action="{% url 'users:login' %}" method="POST">
+                {% csrf_token %}
+                <div class='form-field'>
+                    {{ login_form.as_div }}
+                </div>
+                <div class='button-field'>
+                    <button type="submit">Submit</button>
+                    <p>Dont have an account yet? <a href="{% url 'users:sign_up' %}">Sign up</a></p>
+                </div>
+            </form>
+        </section>
+    </body>
+{% endblock content %}

@@ -1,0 +1,152 @@
+/* === Base Styles === */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #120540, #433C73, #A4088C);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: system-ui, sans-serif;
+}
+
+body h1 {
+  font-size: 30px;
+  font-weight: 500;
+  color: #fff;
+  margin-top: 100px;
+}
+
+/* Sign Up Form Container */
+form {
+  background: linear-gradient(135deg, #120540, #433C73);
+  width: 600px;
+  padding: 50px;
+  border: 1px solid #AEA7D9;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 30px;
+  color: #fff;
+}
+
+/* Form Fields */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+}
+
+.form-field label {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.form-field input {
+  width: 70%;
+  height: 35px;
+  border-radius: 8px;
+  padding: 8px 10px;
+  border: none;
+  background-color: #fff;
+  color: #120540;
+}
+
+.form-field input:focus {
+  box-shadow: 0 0 6px #AEA7D9;
+  outline: none;
+}
+
+/* Buttons */
+.button-field {
+  padding-top: 20px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.button-field button {
+  width: 120px;
+  height: 40px;
+  border: none;
+  border-radius: 25px;
+  background-color: #A4088C;
+  color: #fff;
+  font-size: 16px;
+  transition: 0.3s ease-in-out;
+}
+
+.button-field button:hover {
+  background-color: #AEA7D9;
+  color: #120540;
+  cursor: pointer;
+}
+
+.button-field a,
+.button-field p {
+  font-size: 16px;
+  font-weight: 200;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.button-field a:hover {
+  color: #AEA7D9;
+}
+
+/* === Responsive Media Queries === */
+
+/* Mobile styles (max-width: 480px) */
+@media screen and (max-width: 480px) {
+  body h1 {
+    margin-top: 60px;
+    font-size: 24px;
+  }
+
+  form {
+    width: 90%;
+    padding: 30px 20px;
+  }
+
+  .form-field input {
+    width: 100%;
+  }
+
+  .button-field button {
+    width: 100%;
+  }
+}
+
+/* Large desktop styles (min-width: 1200px) */
+@media screen and (min-width: 1200px) {
+  form {
+    width: 700px;
+    padding: 60px 70px;
+  }
+
+  body h1 {
+    font-size: 36px;
+  }
+
+  .form-field input {
+    width: 80%;
+    height: 45px;
+    font-size: 18px;
+  }
+
+  .button-field button {
+    width: 150px;
+    height: 50px;
+    font-size: 18px;
+  }
+}

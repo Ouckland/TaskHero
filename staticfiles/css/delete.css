@@ -1,0 +1,119 @@
+/* General Page Styling */
+body {
+    font-family: system-ui, sans-serif;
+    background: linear-gradient(135deg, #120540, #433C73, #A4088C);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Delete Section Container */
+.delete-section {
+    width: 90%;
+    max-width: 500px;
+    background-color: rgba(18, 5, 64, 0.9);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 0 10px #120540;
+}
+
+/* Inner Container */
+.delete-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* Message Text */
+.delete-message {
+    font-size: 1.2rem;
+    text-align: center;
+    color: #AEA7D9;
+}
+
+/* Form Buttons */
+.delete-form {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.delete-btn {
+    background-color: #A4088C;
+    color: #fff;
+}
+
+.delete-btn:hover {
+    background-color: #c742ab;
+}
+
+.cancel-btn {
+    background-color: #AEA7D9;
+    color: #120540;
+}
+
+.cancel-btn:hover {
+    background-color: #f2f2f2;
+    color: #120540;
+}
+
+
+
+
+
+/* Responsive styles for Delete page */
+
+@media (max-width: 768px) {
+  .delete-section {
+    width: 95%;
+    padding: 1.5rem;
+  }
+
+  .delete-message {
+    font-size: 1.1rem;
+  }
+
+  .delete-form {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .delete-section {
+    width: 98%;
+    padding: 1rem;
+  }
+
+  .delete-message {
+    font-size: 1rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+}

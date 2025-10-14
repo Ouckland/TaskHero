@@ -1,0 +1,26 @@
+{% load static %}
+{% block extrahead %}
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+{% endblock extrahead %}
+{% block header %}
+    {% if request.user.is_authenticated %}
+        <nav class="dash-nav">
+      <div class="nav-left">
+        <a href="{% url 'TaskHero:dashboard' %}">Dashboard</a>
+        <a href="{% url 'TaskHero:add_task' %}">Add Task</a>
+      </div>
+      <button class="hamburger" aria-label="Toggle navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <form action="{% url 'users:logout' %}" method="POST" class="nav-right">
+        {% csrf_token %}
+        <button type="submit" class="logout-btn">Logout</button>
+      </form>
+    </nav>
+    {% endif %}
+{% endblock header %} 
+
